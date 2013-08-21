@@ -1,0 +1,22 @@
+posPsmodels INSTALLATION GUIDE
+=========================
+
+Linux
+
+First time run:
+
+make all
+
+To compile only posPsmodels run:
+
+make -B reasoner
+
+
+ 
+This will compile posPsmodels and all its dependencies. 
+The posPsmodels binary and all its dependencies will be located in the reasoner folder.
+Copy the reasoner folder in your application.
+
+
+Roberto Confalonieri
+confalonieri@lsi.upc.edu

@@ -1,0 +1,40 @@
+% Location preferences (lodges in santsmontjuic)
+60 loc_santsmontjuic :- loc_ciutatvella.
+40 loc_santsmontjuic :- loc_gracia.
+60 loc_santsmontjuic :- loc_lescorts.
+60 loc_santsmontjuic :- loc_eixample.
+40 loc_santsmontjuic :- loc_santmarti.
+40 loc_santsmontjuic :- loc_sarriasantgervasi.
+
+% Access preferences
+% 80 access_L1 x access_L3.
+
+% Cost Preferences
+80 cost_3 x cost_4.
+
+% Rate Preferences
+80 rate_3 x rate_4.
+
+% Requirements
+
+% Type Preferences
+	% Cinema preferences
+80 type_originalversion :- pet_cinema.
+50 type_duration150 x duration200 :- pet_cinema.
+50 type_premier15days x type_premier30days :- pet_cinema.
+	% Restaurant preferences 
+50 type_localclimatizado x type_conterraza :- pet_rest.
+	% Drink preferences 
+50 type_coffee :- pet_drink.
+
+% Activity preferences 
+% 80 pet_type_rest :- context_time_11_13h.
+% 80 pet_type_rest :- context_time_19_21h.
+% 80 pet_type_drink :- context_freetime.
+
+
+% User context
+% 100 context_freetime.
+% 100 context_time_15_17h.
+100 pet_cinema.
+100 loc_santsmontjuic.

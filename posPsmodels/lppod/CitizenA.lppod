@@ -1,0 +1,40 @@
+% Location preferences (lives in santsmontjuic)
+60 loc_santsmontjuic :- loc_ciutatvella.
+40 loc_santsmontjuic :- loc_gracia.
+60 loc_santsmontjuic :- loc_lescorts.
+60 loc_santsmontjuic :- loc_eixample.
+40 loc_santsmontjuic :- loc_santmarti.
+40 loc_santsmontjuic :- loc_sarriasantgervasi.
+
+% Access preferences
+% 80 access_L3 x access_L1.
+
+% Cost Preferences
+80 cost_1 x cost_2.
+
+% Rate Preferences
+80 rate_1 x rate_2.
+
+% Requirements
+100 req_wheelchairaccess.
+
+% Type Preferences
+	% Cinema preferences
+80 type_premier15days x duration150 :- pet_type_cinema.
+	% Restaurant preferences 
+60 type_vegetarian :- pet_restaurant.
+50 type_parking :- pet_restaurant.
+60 type_terrace :- weather_sunny.
+
+% Activity preferences 
+% 80 pet_type_restaurant :- context_time_13_15h.
+% 80 pet_type_restaurant :- context_time_21_23h.
+
+% User context
+100 pet_cinema.
+100 loc_lescorts.
+% 100 context_time_21_23h.
+100 -access_L1.
+100 -weather_sunny.
+
+

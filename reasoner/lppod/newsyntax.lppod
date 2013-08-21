@@ -1,0 +1,35 @@
+%Sentences & Rules
+%Subdomain: RestaurantType
+50 Italiana x 50 Mediterranea x 50 Pinchos x 50 Tradicional_Regional :- RestaurantPetition .
+%Subdomain: EatingLocation
+50 Terrace x 50 Inside :- RestaurantPetition .
+%Subdomain: Opening
+50 Opening_7 x 50 Opening_22 :- RestaurantPetition .
+%Subdomain: Language
+50 Ingles :- CinemaPetition .
+%Subdomain: CinemaType
+50 VOS x 50 VT :- CinemaPetition .
+%Subdomain: Gendre
+50 Accion x 50 Terror x 50 Aventuras :- CinemaPetition .
+%Subdomain: Duration
+50 Duration_120 :- CinemaPetition .
+%Subdomain: EatingLocation
+30 Terrace x 50 Inside :- CinemaPetition, HotelPetition .
+%Subdomain: Lunch
+50 Comida_13_14 .
+%Subdomain: TransportAccess
+50 L3 x 50 L1 .
+%Subdomain: Dinner
+50 Cena_20_21 .
+%Subdomain: ActivityValuation
+50 rate_5 x 50 rate_4 x 50 rate_3 .
+%Subdomain: TransportType
+50 Metro x 50 Bus x 50 Pie .
+%Subdomain: ActivityCost
+50 Coste_2 x 50 Coste_1 x 50 Coste_3 .
+
+%Requirements
+100 Blind .
+100 Diabetic .
+100 Person_with_reduced_mobility .
+

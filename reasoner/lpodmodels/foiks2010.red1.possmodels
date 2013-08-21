@@ -1,0 +1,10 @@
+Reading , Duration : 0.0
+Constructing program in Smodels, Duration : 0.0
+Possibilistic consequenses, Duration : 0.0
+
+********** Possibilistic stable model n° 1 **********
+
+(d, 40) (c, 60) (b, 50) 
+Number of atoms (smodels): 4
+Number of rules (smodels): 4
+Total duration : 0.0
