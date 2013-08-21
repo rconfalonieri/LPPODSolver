@@ -151,7 +151,8 @@ main(int argc, char* argv[]) {
 
 
 		//parse psmodel output and save models and satisfaction degrees
-		parsePsmodelsNew(model_file,modelList);
+		//parsePsmodelsNew(model_file,modelList);
+		parsePsmodelsForDecisionMaking(model_file,modelList);
 
 		//for debug
 		//printListElement(modelList);

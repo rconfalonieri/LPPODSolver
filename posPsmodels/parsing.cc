@@ -460,6 +460,109 @@ int parsePsmodelsNew(char *model_file,list<LpodModel> *modelList) {
 
 }
 
+/*Answer: 1
+Stable Model: b ass(b) h c s r -f w -ass(ci) *sat(1,1) *sat(2,2)
+Answer: 2
+Stable Model: ci ass(ci) h c s r f -w -ass(b) *sat(1,2) *sat(2,1)
+Tester calls: 3
+*/
+int parsePsmodelsForDecisionMaking(char *model_file,list<LpodModel> *modelList) {
+
+	string line;
+	LpodModel *model;
+	string filename = Utils::char2string(model_file);
+	ifstream f;
+	bool newModel = false;
+	//bool bestModel = false;
+	int modelId;
+	string tmpId;
+
+	vector<string> satL;
+	vector<string> atomL;
+
+	f.open(filename.c_str());
+
+	if (f==NULL) {
+		cout << "Error in opening the LPOD model file" << endl;
+		return(EXIT_FAILURE);
+	}
+
+	while (getline(f, line)) {
+		if (PARSING_DEBUG_NEW) {
+			cout << "---------------------------------" << endl;
+			cout << "Line: " << line << endl;
+			cout << "---------------------------------" << endl;
+		}
+
+
+		if (Utils::contains(line,"Answer: ")!=0) {
+
+			tmpId = line.substr(8,line.size());
+
+			if (PARSING_DEBUG_NEW) {
+				cout << "---------------------------------" << endl;
+				//cout << "Line: " << line << endl;
+				cout << "Line contains Answer: " << endl;
+				cout << "tmpId: " << tmpId << endl;
+				cout << "---------------------------------" << endl;
+			}
+		}
+		if (Utils::contains(line,"Stable Model: ")!=0 ) {
+
+			modelId = Utils::string2Int(tmpId);
+			model = new LpodModel(modelId);
+			newModel = true;
+			//if (bestModel)
+				model->setBestModel(true);
+			string tmpModel = line.substr(14,line.size());
+			if (PARSING_DEBUG_NEW) {
+				cout << "---------------------------------" << endl;
+				//cout << "Line: " << line << endl;
+				cout << "Line contains Stable Model: " << endl;
+				cout << "tmpModel: " << tmpModel << endl;
+				cout << "---------------------------------" << endl;
+			}
+			vector<string> tokens;
+			tokenize(tmpModel,tokens);
+			for (int i=0;i<tokens.size();i++) {
+
+				if (Utils::contains(tokens[i],"*")) {
+					//its a satisfaction degree
+					model->getSatisfaction()->push_back(tokens[i]);
+				}
+				else {
+					// its an atom
+					model->getAtoms()->push_back(tokens[i]);
+				}
+			}
+		}
+
+		//if modelList
+		if (PARSING_DEBUG_NEW) {
+			cout << "Before existmodel" << endl;
+		}
+		if (newModel) {
+			//check whether the model already exists in the list
+			if (!existModel(modelList,model,true)) {
+				modelList->push_back(*model);
+				newModel = false;
+				//bestModel = false;
+			}
+		}
+
+	}
+	if (PARSING_DEBUG_NEW) {
+
+		//delete(model);
+		printListElement(modelList);
+
+	}
+	f.close();
+	//output.close();
+	return(1);
+
+}
+
 void updateLppodProgramHead(LppodProgram *p) {
 
 	list<string> *programHead = new list<string>();

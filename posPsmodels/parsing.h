@@ -34,6 +34,8 @@
 
 int parsePsmodels(char *model_file,list <LpodModel> *modelList);
 int parsePsmodelsNew(char *model_file,list <LpodModel> *modelList);
+int parsePsmodelsForDecisionMaking(char *model_file,list <LpodModel> *modelList)
+;
 int parseLppodRule(vector<string> splittedLine, string line, LppodProgram *p, int ruleId);
 int parseLppod(char* lppod, LppodProgram *p);
 void updateLppodProgramHead(LppodProgram *p);
