@@ -154,6 +154,12 @@ main(int argc, char* argv[]) {
 		//parsePsmodelsNew(model_file,modelList);
 		parsePsmodelsForDecisionMaking(model_file,modelList);
 
+		if (modelList->size()==0) {
+			cout << "No possibilistic models" << endl;
+			return(EXIT_SUCCESS);
+		}
+
+
 		//for debug
 		//printListElement(modelList);
 
